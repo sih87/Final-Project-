@@ -1,0 +1,139 @@
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <title></title>
+        <meta charset="utf-8">
+       
+	<title>csye6220-Term Project-Final Project</title>
+
+        <script>
+            
+	$(document).ready(function() { 
+            
+           $('#UsedInstartupAnimatedGameObjectDialog').dialog({autoOpen: false});
+           $('#UsedInsetAnimationDialog').dialog({autoOpen: false});
+           $('#UsedIndrawDialog').dialog({autoOpen: false});
+           $('#UsedInshutdownAnimatedGameObjectDialog').dialog({autoOpen: false});
+           $('#UsedInshutdownDialog').dialog({autoOpen: false});
+           $('#UsedIncollisionAreaDialog').dialog({autoOpen: false});
+        });
+
+function koy(name)
+{
+                 bise=$(window).scrollLeft();
+               var rt1= jQuery.inArray(name, myFArray)
+               
+               if(rt1==-1)
+               {
+                  
+                    myFArray.push(name);
+                    var options=
+                   {
+                        title:name,
+                        position:[xThis-bise,yThis],
+                        width:250,
+                        height:350
+                 };
+                
+                    xThis+=260;
+               }
+               else{ $("#UsedIn"+name+"Dialog").dialog('open');}
+                
+              $("#UsedIn"+name+"Dialog").dialog('option',options);
+              
+              $("#UsedIn"+name+"Dialog").dialog('open');
+  
+             
+}
+        </script>
+        
+    </head>
+    <body>
+   
+        <a onclick="koy('startupAnimatedGameObject')" href="#">startupAnimatedGameObject()</a><br/>
+        <a onclick="koy('setAnimation')" href="#">setAnimation()</a><br/>
+        <a onclick="koy('draw')" href="#">draw()</a><br/>
+        <a onclick="koy('shutdownAnimatedGameObject')" href="#">shutdownAnimatedGameObject()</a><br/>
+        <a onclick="koy('shutdown')" href="#">shutdown()</a><br/>
+        <a onclick="koy('collisionArea')" href="#">collisionArea()</a><br/>
+        
+        
+        <div id="UsedInstartupAnimatedGameObjectDialog" style="display: none;">
+            <pre class="prettyprint">
+    this.startupAnimatedGameObject = function(/**Image*/ image, /**Number*/ x, /**Number*/ y, /**Number*/ z, /**Number*/ frameCount, /**Number*/ fps)
+    {
+        if (frameCount <= 0) throw "framecount can not be <= 0";
+        if (fps <= 0) throw "fps can not be <= 0"
+
+        this.startupVisualGameObject(image, x, y, z);
+        this.currentFrame = 0;
+        this.frameCount = frameCount;
+        this.timeBetweenFrames = 1/fps;
+        this.timeSinceLastFrame = this.timeBetweenFrames;
+        this.frameWidth = this.image.width / this.frameCount;
+
+        return this;
+    }
+            </pre>
+        </div>
+        <div id="UsedInsetAnimationDialog" style="display: none;">
+            <pre class="prettyprint">
+    this.setAnimation = function(/**Image*/ image, /**Number*/ frameCount, /**Number*/ fps)
+    {
+        if (frameCount <= 0) throw ""framecount can not be <= 0"";
+        if (fps <= 0) throw ""fps can not be <= 0""
+
+        this.image = image;
+        this.currentFrame = 0;
+        this.frameCount = frameCount;
+        this.timeBetweenFrames = 1/fps;
+        this.timeSinceLastFrame = this.timeBetweenFrames;
+        this.frameWidth = this.image.width / this.frameCount;
+    }
+            </pre>
+        </div>
+        <div id="UsedIndrawDialog" style="display: none;">
+            <pre class="prettyprint">
+    this.draw = function(/**Number*/ dt, /**CanvasRenderingContext2D*/ context, /**Number*/ xScroll, /**Number*/ yScroll)
+    {
+        var sourceX = this.frameWidth * this.currentFrame;
+        context.drawImage(this.image, sourceX, 0, this.frameWidth, this.image.height, this.x - xScroll, this.y - yScroll, this.frameWidth, this.image.height);
+
+        this.timeSinceLastFrame -= dt;
+        if (this.timeSinceLastFrame <= 0)
+        {
+           this.timeSinceLastFrame = this.timeBetweenFrames;
+           ++this.currentFrame;
+           this.currentFrame %= this.frameCount;
+        }
+    }
+            </pre>
+        </div>
+        <div id="UsedInshutdownAnimatedGameObjectDialog" style="display: none;">
+            <pre class="prettyprint">
+   this.shutdownAnimatedGameObject = function()
+    {
+        this.shutdownVisualGameObject();
+    }
+            </pre>
+        </div>
+        <div id="UsedInshutdownDialog" style="display: none;">
+              <pre class="prettyprint">
+   this.shutdown = function()
+    {
+        this.shutdownAnimatedGameObject();
+    }
+            </pre>
+        </div>
+        <div id="UsedIncollisionAreaDialog" style="display: none;">
+            <pre class="prettyprint">
+   this.collisionArea = function()
+    {
+        return new Rectangle().startupRectangle(this.x, this.y, this.frameWidth, this.image.height);
+    }
+            </pre>
+        </div>
+       <script>prettyPrint();</script>
+    </body>
+</html>

@@ -1,0 +1,309 @@
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <title></title>
+        <meta charset="utf-8">
+       
+	<title>csye6220-Term Project-Final Project</title>
+
+        <script>
+           
+	$(document).ready(function() { 
+            
+           $('#UsedInstartupGameObjectManagerDialog').dialog({autoOpen: false});
+           $('#UsedInonkeydownDialog').dialog({autoOpen: false});
+           $('#UsedInonkeyupDialog').dialog({autoOpen: false});
+           $('#UsedInshutdownAllDialog').dialog({autoOpen: false});
+           $('#UsedInaddGameObjectDialog').dialog({autoOpen: false});
+           $('#UsedInaddNewGameObjectsDialog').dialog({autoOpen: false});
+           $('#UsedInremoveGameObjectDialog').dialog({autoOpen: false});
+           $('#UsedInremoveOldGameObjectsDialog').dialog({autoOpen: false});
+           $('#UsedInkeyDownDialog').dialog({autoOpen: false});
+           $('#UsedInkeyUpDialog').dialog({autoOpen: false});
+           $('#UsedIndrawGDialog').dialog({autoOpen: false});
+          
+          
+        });
+
+function koy(name)
+{
+                 bise=$(window).scrollLeft();
+               var rt1= jQuery.inArray(name, myFArray)
+               
+               if(rt1==-1)
+               {
+                  
+                    myFArray.push(name);
+                    var options=
+                   {
+                        title:name,
+                        position:[xThis-bise,yThis],
+                        width:250,
+                        height:350
+                 };
+                
+                    xThis+=260;
+               }
+               else{ $("#UsedIn"+name+"Dialog").dialog('open');}
+                
+              $("#UsedIn"+name+"Dialog").dialog('option',options);
+              
+              $("#UsedIn"+name+"Dialog").dialog('open');
+  
+             
+}
+        </script>
+        
+    </head>
+    <body>
+   
+        <a onclick="koy('startupGameObjectManager')" href="#">startupGameObjectManager()</a><br/>
+        <a onclick="koy('onkeydown')" href="#">onkeydown()</a><br/>
+        <a onclick="koy('onkeyup')" href="#">onkeyup()</a><br/>
+        <a onclick="koy('drawG')" href="#">draw()</a><br/>
+        <a onclick="koy('shutdownAll')" href="#">shutdownAll()</a><br/>
+        <a onclick="koy('addGameObject')" href="#">addGameObject()</a><br/>
+        <a onclick="koy('addNewGameObjects')" href="#">addNewGameObjects()</a><br/>
+        <a onclick="koy('removeGameObject')" href="#">removeGameObject()</a><br/>
+        <a onclick="koy('removeOldGameObjects')" href="#">removeOldGameObjects()</a><br/>
+        <a onclick="koy('keyDown')" href="#">keyDown()</a><br/>
+        <a onclick="koy('keyUp')" href="#">keyUp()</a><br/>
+      
+        
+        
+        
+        <div id="UsedInstartupGameObjectManagerDialog" style="display: none;">
+             <pre class="prettyprint">
+       this.startupGameObjectManager = function()
+    {
+        // set the global pointer to reference this object
+        g_GameObjectManager = this;
+
+        // watch for keyboard events
+        document.onkeydown = function(event){g_GameObjectManager.keyDown(event);}
+        document.onkeyup = function(event){g_GameObjectManager.keyUp(event);}
+
+        // get references to the canvas elements and their 2D contexts
+        this.canvas = document.getElementById('canvas');
+
+        // if the this.canvas.getContext function does not exist it is a safe bet that
+        // the current browser does not support the canvas element.
+        // in this case we don't go any further, which will save some debuggers (like
+        // the IE8 debugger) from throwing up a lot of errors.
+        if (this.canvas.getContext)
+        {
+            this.canvasSupported = true;
+            this.context2D = this.canvas.getContext('2d');
+            this.backBuffer = document.createElement('canvas');
+            this.backBuffer.width = this.canvas.width;
+            this.backBuffer.height = this.canvas.height;
+            this.backBufferContext2D = this.backBuffer.getContext('2d');
+        }
+
+        // create a new ResourceManager
+        new ResourceManager().startupResourceManager(
+            [{name: 'runLeft', src: 'run_left.png'},
+            {name: 'runRight', src: 'run_right.png'},
+            {name: 'idleLeft', src: 'idle_left.png'},
+            {name: 'idleRight', src: 'idle_right.png'},
+            {name: 'background0', src: 'jsplatformer4_b0.png'},
+            {name: 'background1', src: 'jsplatformer4_b1.png'},
+            {name: 'background2', src: 'jsplatformer4_b2.png'},
+            {name: 'block', src: 'BlockA0.png'},
+            {name: 'gem', src: 'Gem.png'},
+            {name: 'mainmenu', src: 'mainmenu.png'},
+            {name: 'portal', src: 'portal.png'}]);
+
+        // use setInterval to call the draw function
+        setInterval(function(){g_GameObjectManager.draw();}, SECONDS_BETWEEN_FRAMES);
+        
+        return this;        
+    }
+            </pre>
+        </div>
+        <div id="UsedInonkeydownDialog" style="display: none;">
+             <pre class="prettyprint">
+    document.onkeydown = function(event){g_GameObjectManager.keyDown(event);}
+            </pre>
+        </div>
+        <div id="UsedInonkeyupDialog" style="display: none;">
+              <pre class="prettyprint">
+       document.onkeyup = function(event){g_GameObjectManager.keyUp(event);}
+            </pre>
+        </div>
+        
+        <div id="UsedIndrawGDialog" style="display: none;">
+              <pre class="prettyprint">
+      this.draw = function ()
+    {
+        // calculate the time since the last frame
+        var thisFrame = new Date().getTime();
+        var dt = (thisFrame - this.lastFrame)/1000;
+        this.lastFrame = thisFrame;
+
+        if (!this.resourcesLoaded)
+        {
+            var numLoaded = 0;
+            for (i = 0; i < g_ResourceManager.imageProperties.length; ++i)
+            {
+                if (g_ResourceManager[g_ResourceManager.imageProperties[i]].complete)
+                {
+                    ++numLoaded;
+                }
+            }
+            if ( numLoaded == g_ResourceManager.imageProperties.length )
+            {
+                // create a new ApplicationManager
+                new ApplicationManager().startupApplicationManager(this.canvas.width, this.canvas.height);
+                this.resourcesLoaded = true;
+            }
+            else
+            {
+                this.loadingScreenCol += this.loadingScreenColDirection * this.loadingScreenColSpeed * dt;
+                if (this.loadingScreenCol > 255)
+                {
+                    this.loadingScreenCol = 255;
+                    this.loadingScreenColDirection = -1;
+                }
+                else if (this.loadingScreenCol < 0)
+                {
+                    this.loadingScreenCol = 0;
+                    this.loadingScreenColDirection = 1;
+                }
+                this.context2D.fillStyle = ""rgb("" + parseInt(this.loadingScreenCol) + "","" + parseInt(this.loadingScreenCol) + "","" + parseInt(this.loadingScreenCol) + "")"";
+                this.context2D.fillRect (0, 0, this.canvas.width, this.canvas.height);
+            }
+        }
+        
+        // clear the drawing contexts
+        if (this.canvasSupported && this.resourcesLoaded)
+        {
+            this.backBufferContext2D.clearRect(0, 0, this.backBuffer.width, this.backBuffer.height);
+
+            this.addNewGameObjects();
+            this.removeOldGameObjects();
+        
+            // first update all the game objects
+            for (var x = 0; x < this.gameObjects.length; ++x)
+            {
+                if (this.gameObjects[x].update)
+                {
+                    this.gameObjects[x].update(dt, this.backBufferContext2D, this.xScroll, this.yScroll);
+                }
+            }
+
+            // then draw the game objects
+            for (var x = 0; x < this.gameObjects.length; ++x)
+            {
+                if (this.gameObjects[x].draw)
+                {
+                    this.gameObjects[x].draw(dt, this.backBufferContext2D, this.xScroll, this.yScroll);
+                }
+            }
+
+            // copy the back buffer to the displayed canvas
+            this.context2D.drawImage(this.backBuffer, 0, 0);
+        }        
+    };
+
+            </pre>
+        </div>
+        <div id="UsedInshutdownAllDialog" style="display: none;">
+              <pre class="prettyprint">
+       this.shutdownAll = function()
+    {
+        for (var x = 0; x < this.gameObjects.length; ++x)
+        {
+            if (this.gameObjects[x].shutdown)
+            {
+                this.gameObjects[x].shutdown();
+            }
+        }
+
+        this.removeOldGameObjects();
+    }
+            </pre>
+        </div>
+        <div id="UsedInaddGameObjectDialog" style="display: none;">
+              <pre class="prettyprint">
+      this.addGameObject = function(gameObject)
+    {
+        this.addedGameObjects.push(gameObject);
+    };
+            </pre>
+        </div>
+        
+        <div id="UsedInaddNewGameObjectsDialog" style="display: none;">
+              <pre class="prettyprint">
+     this.addNewGameObjects = function()
+    {
+        if (this.addedGameObjects.length != 0)
+        {
+            for (var x = 0; x < this.addedGameObjects.length; ++x)
+            {
+                this.gameObjects.push(this.addedGameObjects[x]);
+            }
+
+            this.addedGameObjects.clear();
+            this.gameObjects.sort(function(a,b){return a.zOrder - b.zOrder;});
+        }
+    }
+
+            </pre>
+        </div>
+        <div id="UsedInremoveGameObjectDialog" style="display: none;">
+              <pre class="prettyprint">
+      this.removeGameObject = function(gameObject)
+    {
+        this.removedGameObjects.push(gameObject);
+    }
+            </pre>
+        </div>
+        <div id="UsedInremoveOldGameObjectsDialog" style="display: none;">
+              <pre class="prettyprint">
+       this.removeOldGameObjects = function()
+    {
+        if (this.removedGameObjects.length != 0)
+        {
+            for (var x = 0; x < this.removedGameObjects.length; ++x)
+            {
+                this.gameObjects.removeObject(this.removedGameObjects[x]);
+            }
+            this.removedGameObjects.clear();
+        }
+    }
+            </pre>
+        </div>
+        <div id="UsedInkeyDownDialog" style="display: none;">
+              <pre class="prettyprint">
+       this.keyDown = function(event)
+    {
+        for (var x = 0; x < this.gameObjects.length; ++x)
+        {
+            if (this.gameObjects[x].keyDown)
+            {
+                this.gameObjects[x].keyDown(event);
+            }
+        }
+    }
+            </pre>
+        </div>
+        <div id="UsedInkeyUpDialog" style="display: none;">
+              <pre class="prettyprint">
+       this.keyUp = function(event)
+    {
+        for (var x = 0; x < this.gameObjects.length; ++x)
+        {
+            if (this.gameObjects[x].keyUp)
+            {
+                this.gameObjects[x].keyUp(event);
+            }
+        }
+    }
+            </pre>
+        </div>
+       
+        <script>prettyPrint();</script>
+    </body>
+</html>

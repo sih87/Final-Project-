@@ -1,0 +1,157 @@
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <title></title>
+        <meta charset="utf-8">
+       
+	<title>csye6220-Term Project-Final Project</title>
+
+        <script>
+           
+	$(document).ready(function() { 
+            
+           $('#UsedInstartupLevelDialog').dialog({autoOpen: false});
+           $('#UsedInaddBlocksDialog').dialog({autoOpen: false});
+           $('#UsedInaddPowerupsDialog').dialog({autoOpen: false});
+           $('#UsedIncurrentBlockDialog').dialog({autoOpen: false});
+           $('#UsedIngroundHeightDialog').dialog({autoOpen: false});
+          
+          
+        });
+
+function koy(name)
+{
+                 bise=$(window).scrollLeft();
+               var rt1= jQuery.inArray(name, myFArray)
+               
+               if(rt1==-1)
+               {
+                  
+                    myFArray.push(name);
+                    var options=
+                   {
+                        title:name,
+                        position:[xThis-bise,yThis],
+                        width:250,
+                        height:350
+                 };
+                
+                    xThis+=260;
+               }
+               else{ $("#UsedIn"+name+"Dialog").dialog('open');}
+                
+              $("#UsedIn"+name+"Dialog").dialog('option',options);
+              
+              $("#UsedIn"+name+"Dialog").dialog('open');
+  
+             
+}
+        </script>
+        
+    </head>
+    <body>
+   
+        <a onclick="koy('startupLevel')" href="#">startupLevel()</a><br/>
+        <a onclick="koy('addBlocks')" href="#">addBlocks()</a><br/>
+        <a onclick="koy('addPowerups')" href="#">addPowerups()</a><br/>
+        <a onclick="koy('currentBlock')" href="#">currentBlock()</a><br/>
+        <a onclick="koy('groundHeight')" href="#">groundHeight()</a><br/>
+      
+        
+        
+        
+        <div id="UsedInstartupLevelDialog" style="display: none;">
+            <pre class="prettyprint">
+    this.startupLevel = function(canvasWidth, canvasHeight)
+    {
+        this.blocks[0] = 3;
+        this.blocks[1] = 2;
+        this.blocks[2] = 1;
+        this.blocks[3] = 1;
+        this.blocks[4] = 1;
+        this.blocks[5] = 1;
+        this.blocks[6] = 2;
+        this.blocks[7] = 3;
+        this.blocks[8] = 2;
+        this.blocks[9] = 1;
+        this.blocks[10] = 2;
+        this.blocks[11] = 3;
+        this.blocks[12] = 4;
+        this.blocks[13] = 5;
+        this.blocks[14] = 4;
+        this.blocks[15] = 3;
+
+        this.powerups['1'] = 'Gem';
+        this.powerups['6'] = 'Gem';
+        this.powerups['10'] = 'Gem';
+        this.powerups['14'] = 'LevelEndPost';
+
+        this.addBlocks(canvasWidth, canvasHeight);
+        this.addPowerups(canvasWidth, canvasHeight);
+
+        return this;
+    }
+            </pre>
+        </div>
+        <div id="UsedInaddBlocksDialog" style="display: none;">
+            <pre class="prettyprint">
+    this.addBlocks = function(canvasWidth, canvasHeight)
+    {
+        for (var x = 0; x < this.blocks.length; ++x)
+        {
+            for (var y = 0; y < this.blocks[x]; ++y)
+            {
+                new VisualGameObject().startupVisualGameObject(g_ResourceManager.block, x * this.blockWidth, canvasHeight - (y + 1) * this.blockHeight, 4);
+            }
+        }
+    }
+            </pre>
+        </div>
+        <div id="UsedInaddPowerupsDialog" style="display: none;">
+            <pre class="prettyprint">
+   this.addPowerups = function(canvasWidth, canvasHeight)
+    {
+        for (var x = 0; x < this.blocks.length; ++x)
+        {
+            if (this.powerups[x])
+            {
+                var xPosition = x * this.blockWidth + this.blockWidth / 2;
+                var yPosition = canvasHeight - this.groundHeight(x);
+
+                switch(this.powerups[x])
+                 {
+                    case 'Gem':
+                        new Powerup().startupPowerup(10, g_ResourceManager.gem, xPosition - g_ResourceManager.gem.width / 2, yPosition - g_ResourceManager.gem.height, 4, 1, 1);
+                        break;
+                    case 'LevelEndPost':
+                        new LevelEndPost().startupLevelEndPost(g_ResourceManager.portal, xPosition - g_ResourceManager.portal.width / 2 / 4, yPosition - g_ResourceManager.portal.height, 4);
+                        break;
+                 }
+            }
+        }
+    }
+            </pre>
+        </div>
+        <div id="UsedIncurrentBlockDialog" style="display: none;">
+            <pre class="prettyprint">
+  this.currentBlock = function(x)
+    {
+        return parseInt( x / this.blockWidth);
+    }
+            </pre>
+        </div>
+        <div id="UsedIngroundHeightDialog" style="display: none;">
+           <pre class="prettyprint">
+    this.groundHeight = function(blockIndex)
+    {
+        if (blockIndex < 0 || blockIndex > this.blocks.length) return 0;
+
+        return this.blocks[blockIndex] *  this.blockHeight;
+    }
+            </pre>
+        </div>
+       
+        <script>prettyPrint();</script>
+    </body>
+</html>

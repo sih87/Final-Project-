@@ -1,0 +1,737 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>csye6220-Term Project-Final Project</title>
+        <link rel="stylesheet" href="css/jquery.ui.all.css">
+         <link rel="stylesheet" href="css/prettify.css">
+        <script src="js/jquery-1.6.2.js"></script>
+        <script src="js/jquery.bgiframe-2.1.2.js"></script>
+        <script src="js/jquery.ui.core.js"></script>
+	<script src="js/jquery.ui.widget.js"></script>
+	<script src="js/jquery.ui.mouse.js"></script>
+	<script src="js/jquery.ui.resizable.js"></script>
+	<script src="js/jquery.ui.accordion.js"></script>
+        <script src="js/jquery.ui.dialog.js"></script>
+        <script src="js/jquery.ui.draggable.js"></script>
+        <script src="js/jquery.ui.position.js"></script>
+        <script src="js/createD.js"></script>
+        <script src="js/jquery.highlight-3.js"></script>
+        
+        <script src="js/prettify.js"></script>
+        
+	<link rel="stylesheet" href="css/demos.css">
+	<script>
+            var myFArray=[];
+            var posy=0;
+            var xThis=200;
+            var yThis=260;
+            
+	$(function() {
+		$( "#accordion" ).accordion({
+			fillSpace: true
+		});
+	});
+	$(function() {
+		$( "#accordionResizer" ).resizable({
+			minHeight: 140,
+                        minWidth:130,
+			resize: function() {
+				$( "#accordion" ).accordion( "resize" );
+			}
+		});
+	});
+	</script>
+        <script>
+	$(document).ready(function() { 
+            
+            $('#AnimatedGameObjectDialog').dialog({
+                autoOpen:false
+           });
+            $('#ApplicationManagerDialog').dialog({
+                autoOpen:false
+           });
+            $('#GameObjectDialog').dialog({
+                autoOpen:false
+           });
+            $('#GameObjectManagerDialog').dialog({
+                autoOpen:false
+           });
+            $('#LevelDialog').dialog({
+                autoOpen:false
+           });
+            $('#LevelEndPostDialog').dialog({
+                autoOpen:false
+           });
+            $('#MainDialog').dialog({
+                autoOpen:false
+           });
+            $('#MainMenuDialog').dialog({
+                autoOpen:false
+           });
+            $('#PlayerDialog').dialog({
+                autoOpen:false
+           });
+            $('#PowerUpDialog').dialog({
+                autoOpen:false
+           });
+            $('#RectangleDialog').dialog({
+                autoOpen:false
+           });
+            $('#RepeatingGameObjectDialog').dialog({
+                autoOpen:false
+           });
+            $('#ResourceManagerDialog').dialog({
+                autoOpen:false
+           });
+            $('#UtilsDialog').dialog({
+                autoOpen:false
+           });
+            $('#VisualGameObjectDialog').dialog({
+                autoOpen:false
+           });
+           
+           
+           
+           
+            $('#AnimatedGameObjectFDialog').dialog({
+                autoOpen:false
+           });
+            $('#ApplicationManagerFDialog').dialog({
+                autoOpen:false
+           });
+            $('#GameObjectFDialog').dialog({
+                autoOpen:false
+           });
+            $('#GameObjectManagerFDialog').dialog({
+                autoOpen:false
+           });
+            $('#InitFDialog').dialog({
+                autoOpen:false
+           });
+            $('#LevelFDialog').dialog({
+                autoOpen:false
+           });
+            $('#LevelEndPostFDialog').dialog({
+                autoOpen:false
+           });
+            $('#MainMenuFDialog').dialog({
+                autoOpen:false
+           });
+            $('#PlayerFDialog').dialog({
+                autoOpen:false
+           });
+            $('#PowerUpFDialog').dialog({
+                autoOpen:false
+           });
+            $('#RectangleFDialog').dialog({
+                autoOpen:false
+           });
+            $('#RepeatingGameObjectFDialog').dialog({
+                autoOpen:false
+           });
+            $('#ResourceManagerFDialog').dialog({
+                autoOpen:false
+           });
+            $('#VisualGameObjectFDialog').dialog({
+                autoOpen:false
+           });
+           
+           
+           
+            $('#fpsDialog').dialog({
+                autoOpen:false
+           });
+            $('#SECONDS_BETWEEN_FRAMESDialog').dialog({
+                autoOpen:false
+           });
+            $('#g_GameObjectManagerDialog').dialog({
+                autoOpen:false
+           });
+            $('#g_ApplicationManagerDialog').dialog({
+                autoOpen:false
+           });
+            $('#g_ResourceManagerDialog').dialog({
+                autoOpen:false
+           });
+            $('#g_scoreDialog').dialog({
+                autoOpen:false
+           });
+            $('#g_playerDialog').dialog({
+                autoOpen:false
+           });
+           
+           
+           $('#GameObjectHDialog').dialog({
+                autoOpen:false,
+                title:'GameObject',
+                position:[520,20],
+                width:100,
+                height:50,
+                draggable:false,
+                resizable:false
+           });
+            $('#VisualGameObjectHDialog').dialog({
+                autoOpen:false,
+                title:'VisualGameObject',
+                position:[520,160],
+                width:100,
+                height:50,
+                draggable:false,
+                resizable:false
+           });
+            
+           $('#AnimatedGameObjectHDialog').dialog({
+                autoOpen:false,
+                title:'AnimatedGameObject',
+                position:[520,300],
+                width:100,
+                height:50,
+                draggable:false,
+                resizable:false
+           });
+           
+           $('#MainMenuHDialog').dialog({
+                autoOpen:false,
+                title:'MainMenu',
+                position:[260,430],
+                width:100,
+                height:50,
+                draggable:false,
+                resizable:false
+           });
+           
+            $('#RepeatingGameObjectHDialog').dialog({
+                autoOpen:false,
+                title:'RepeatingGameObject',
+                position:[780,430],
+                width:100,
+                height:50,
+                draggable:false,
+                resizable:false
+           });
+           
+            $('#LevelEndPostHDialog').dialog({
+                autoOpen:false,
+                title:'LevelEndPost',
+                position:[520,450],
+                width:100,
+                height:50,
+                draggable:false,
+                resizable:false
+           });
+           
+            $('#PowerUpHDialog').dialog({
+                autoOpen:false,
+                title:'PowerUp',
+                position:[260,580],
+                width:100,
+                height:50,
+                draggable:false,
+                resizable:false
+           });
+            
+            $('#PlayerHDialog').dialog({
+                autoOpen:false,
+                title:'Player',
+                position:[780,580],
+                width:100,
+                height:50,
+                draggable:false,
+                resizable:false
+               
+               
+           });
+           
+           
+           
+           
+           $('#GameObjectH1Dialog').dialog({
+                autoOpen:false
+           });
+            $('#VisualGameObjectH1Dialog').dialog({
+               autoOpen:false
+           });
+            
+           $('#AnimatedGameObjectH1Dialog').dialog({
+               autoOpen:false
+           });
+           
+           $('#MainMenuH1Dialog').dialog({
+               autoOpen:false
+           });
+           
+            $('#RepeatingGameObjectH1Dialog').dialog({
+                autoOpen:false
+           });
+           
+            $('#LevelEndPostH1Dialog').dialog({
+                autoOpen:false
+           });
+           
+            $('#PowerUpH1Dialog').dialog({
+                autoOpen:false
+           });
+            
+            $('#PlayerH1Dialog').dialog({
+                autoOpen:false
+             });
+             
+             
+             
+             $('#ApplicationManagerMDialog').dialog({
+                autoOpen:false
+           });
+             
+             $('#ApplicationManagerLDialog').dialog({
+                autoOpen:false
+           });
+             $('#ApplicationManagerRDialog').dialog({
+                autoOpen:false
+           });
+             $('#ApplicationManagerPDialog').dialog({
+                autoOpen:false
+           });
+             $('#AnimatedGameObjectRDialog').dialog({
+                autoOpen:false
+           });
+             $('#RepeatingGameObjectCDialog').dialog({
+                autoOpen:false
+           });
+             $('#GameObjectManagerADialog').dialog({
+                autoOpen:false
+           });
+             $('#GameObjectManagerRDialog').dialog({
+                autoOpen:false
+           });
+             $('#LevelVDialog').dialog({
+                autoOpen:false
+           });
+             $('#LevelPDialog').dialog({
+                autoOpen:false
+           });
+             $('#LevelLDialog').dialog({
+                autoOpen:false
+           });
+             $('#MainGDialog').dialog({
+                autoOpen:false
+           });
+             $('#ResourceDialog').dialog({
+                autoOpen:false
+           });
+            
+            
+});
+
+
+var options = new Object();
+var currentX=0;
+var currentY=0;
+var x=200;
+var y=50;
+var w=250;
+var h=370;
+
+
+
+var xi=1000;
+var yi=50;
+var wi=350;
+var hi=470;
+var ww=0;
+var myArray=[];
+var inhrtArray=[];
+var posArray=[];
+var bise=0;
+
+     function oDialog(cl,fName)
+            
+           {
+                
+               bise=$(window).scrollLeft();
+               var rt= jQuery.inArray(cl, myArray)
+               
+               if(rt==-1)
+               {
+                  
+                    myArray.push(cl);
+                    if(fName=='functions'){
+                        h=200;
+                        w=250;
+                    }
+                    else if(fName=='classes'|| fName=='composition')
+                    {
+                        h=370;
+                        w=250;
+                    }
+                   else {
+                        h=200;
+                        w=300;
+                    }
+                    var options=
+                   {
+                        title:cl,
+                        position:[x-bise,y],
+                        width:w,
+                        height:h
+                 };
+                
+                posArray.push({
+                            
+                            'name':cl,
+                            'x':x,
+                            'y':y
+                            
+                          });
+                     if(fName=='vars')
+                     {
+                         x+=310;
+                     }     
+                     else {
+                         x+=260;
+                     }
+               }
+               else{ $("#"+cl+'Dialog').dialog('open');}
+                
+               $("#"+cl+'Dialog').dialog('option',options);
+               $("#"+cl+'Dialog').load(fName+'/'+cl+'.html', function() {
+               $("#"+cl+'Dialog').dialog('open');
+  
+               });
+            
+             }
+             
+             function put()
+             {
+                  
+             $("#AnimatedGameObjectHDialog").dialog('open');
+             $("#GameObjectHDialog").dialog('open');
+             $("#VisualGameObjectHDialog").dialog('open');
+             $("#MainMenuHDialog").dialog('open');
+             $("#RepeatingGameObjectHDialog").dialog('open');
+             $("#PowerUpHDialog").dialog('open');
+             $("#PlayerHDialog").dialog('open');
+             $("#LevelEndPostHDialog").dialog('open');
+             img1.style.display="block";
+             img2.style.display="block";
+             img3.style.display="block";
+             img4.style.display="block";
+             img5.style.display="block";
+             img6.style.display="block";
+             img7.style.display="block";
+             }
+             
+             function inhrt(nar,inhr)
+             {
+                 bise=$(window).scrollLeft();
+               var rt= jQuery.inArray(nar, inhrtArray)
+               
+               if(rt==-1)
+               {
+                  
+                    inhrtArray.push(nar);
+                 
+                    var options=
+                   {
+                        title:nar,
+                        position:[xi-bise,yi],
+                        width:wi,
+                        height:hi+100
+                 };
+                
+              
+                         xi+=360;
+                     
+               }
+               else{ $("#"+nar+'H1Dialog').dialog('open');}
+                
+               $("#"+nar+'H1Dialog').dialog('option',options);
+            
+               $("#"+nar+'H1Dialog').load(inhr+'/'+nar+'.html', function() {
+               $("#"+nar+'H1Dialog').dialog('open');
+  
+               }); 
+             }
+           
+           function hideImgs()
+           {
+               img1.style.display="none";
+               img2.style.display="none";
+               img3.style.display="none";
+               img4.style.display="none";
+               img5.style.display="none";
+               img6.style.display="none";
+               img7.style.display="none";
+           }
+      function setX(){x=200;y=50;}
+      
+      function closeD()
+      {
+          $.each(myArray, function(i, v) {
+              
+              $("#"+v+'Dialog').dialog('close');
+              $("#"+v+'FDialog').dialog('close');
+              $("#UsedIn"+v+"Dialog").dialog('close');
+              });
+              
+             $("#AnimatedGameObjectHDialog").dialog('close');
+             $("#GameObjectHDialog").dialog('close');
+             $("#VisualGameObjectHDialog").dialog('close');
+             $("#MainMenuHDialog").dialog('close');
+             $("#RepeatingGameObjectHDialog").dialog('close');
+             $("#PowerUpHDialog").dialog('close');
+             $("#PlayerHDialog").dialog('close');
+             $("#LevelEndPostHDialog").dialog('close');
+             $("#ResourceDialog").dialog('close');
+              
+          $.each(inhrtArray, function(i, v) {
+          
+              $("#"+v+'H1Dialog').dialog('close');
+              
+          });
+          $.each(myFArray, function(i, v) {
+          
+              $("#UsedIn"+v+'Dialog').dialog('close');
+              
+          });
+
+      }
+      function put1()
+      {
+          bise=$(window).scrollLeft();
+         var options=
+                   {
+                        title:'References',
+                        position:[200-bise,50],
+                        width:400,
+                        height:300
+                 }; 
+                 $("#ResourceDialog").dialog('option',options);
+                 $("#ResourceDialog").dialog('open');
+      }
+
+	</script>
+        <style>
+            .classes{ 
+                cursor: pointer;
+            }
+            .functions{ 
+                cursor: pointer;
+            }
+            .globVars{ 
+                cursor: pointer;
+            }
+            .inheritance{ 
+                cursor: pointer;
+            }
+            .comps{ 
+                cursor: pointer;
+            }
+        </style>
+        
+</head>
+<body>
+    
+    <img id="img1" STYLE="display: none; position:absolute; TOP:340px; LEFT:420px; WIDTH:80px; HEIGHT:130px" src="pics/arL1.png"/>
+    <img id="img2" STYLE="display: none; position:absolute; TOP:500px; LEFT:420px; WIDTH:80px; HEIGHT:130px" src="pics/arL2.png"/>
+    <img id="img3" STYLE="display: none; position:absolute; TOP:340px; LEFT:690px; WIDTH:80px; HEIGHT:130px" src="pics/arR1.png"/>
+    <img id="img4" STYLE="display: none; position:absolute; TOP:500px; LEFT:690px; WIDTH:80px; HEIGHT:130px" src="pics/arR2.png"/>
+    <img id="img5" STYLE="display: none; position:absolute; TOP:365px; LEFT:570px; WIDTH:50px; HEIGHT:75px" src="pics/ArD.png"/>
+    <img id="img6" STYLE="display: none; position:absolute; TOP:220px; LEFT:570px; WIDTH:50px; HEIGHT:75px" src="pics/ArD_1.png"/>
+    <img id="img7" STYLE="display: none; position:absolute; TOP:80px; LEFT:570px; WIDTH:50px; HEIGHT:75px" src="pics/ArD_2.png"/>
+		
+<div class="demo">
+ 
+<div id="accordionResizer" style="float: left; padding:5px; width:150px; height:400px;" class="ui-widget-content">
+
+<div id="accordion">
+    <h3><a href="#" onclick="setX(),closeD(),hideImgs()">Classes</a></h3>
+        
+	<div>
+            <p class="classes" onclick="oDialog('AnimatedGameObject','classes')">AnimatedGameObject </p>
+            <p class="classes" onclick="oDialog('ApplicationManager','classes')">ApplicationManager</p>
+            <p class="classes" onclick="oDialog('GameObject','classes')">GameObject</p>
+            <p class="classes" onclick="oDialog('GameObjectManager','classes')">GameObjectManager</p>
+            <p class="classes" onclick="oDialog('Level','classes')">Level</p>
+            <p class="classes" onclick="oDialog('LevelEndPost','classes')">LevelEndPost</p>
+            <p class="classes" onclick="oDialog('Main','classes')">Main</p>
+            <p class="classes" onclick="oDialog('MainMenu','classes')">MainMenu</p>
+            <p class="classes" onclick="oDialog('Player','classes')">Player</p>
+            <p class="classes" onclick="oDialog('PowerUp','classes')">Powerup</p>
+            <p class="classes" onclick="oDialog('Rectangle','classes')">Rectangle</p>
+            <p class="classes" onclick="oDialog('RepeatingGameObject','classes')">RepeatingGameObject</p>
+            <p class="classes" onclick="oDialog('ResourceManager','classes')">ResourceManager</p>
+            <p class="classes" onclick="oDialog('Utils','classes')">Utils</p>
+            <p class="classes" onclick="oDialog('VisualGameObject','classes')">VisualGameObject</p>
+        </div>
+        
+	<h3><a href="#" onclick="setX(),closeD(),hideImgs()">Functions</a></h3>
+	<div>
+            <p class="functions" onclick="oDialog('AnimatedGameObjectF','functions')">AnimatedGameObject</p>
+            <p class="functions" onclick="oDialog('ApplicationManagerF','functions')">ApplicationManager</p>
+            <p class="functions" onclick="oDialog('GameObjectF','functions')">GameObject</p>
+            <p class="functions" onclick="oDialog('GameObjectManagerF','functions')">GameObjectManager</p>
+            <p class="functions" onclick="oDialog('InitF','functions')">Init</p>
+            <p class="functions" onclick="oDialog('LevelF','functions')">Level</p>
+            <p class="functions" onclick="oDialog('LevelEndPostF','functions')">LevelEndPost</p>
+            <p class="functions" onclick="oDialog('MainMenuF','functions')">MainMenu</p>
+            <p class="functions" onclick="oDialog('PlayerF','functions')">Player</p>
+            <p class="functions" onclick="oDialog('PowerUpF','functions')">PowerUp</p>
+            <p class="functions" onclick="oDialog('RectangleF','functions')">Rectangle</p>
+            <p class="functions" onclick="oDialog('RepeatingGameObjectF','functions')">RepeatingGameObject</p>
+            <p class="functions" onclick="oDialog('ResourceManagerF','functions')">ResourceManager</p>
+            <p class="functions" onclick="oDialog('VisualGameObjectF','functions')">VisualGameObject</p>
+        </div>
+	<h3><a href="#" onclick="setX(),closeD(),hideImgs()">Global Variables</a></h3>
+	<div>
+            <p class="globVars" onclick="oDialog('fps','vars')">fps</p>
+            <p class="globVars" onclick="oDialog('SECONDS_BETWEEN_FRAMES','vars')">SECONDS_BETWEEN_FRAMES</p>
+            <p class="globVars" onclick="oDialog('g_GameObjectManager','vars')">g_GameObjectManager</p>
+            <p class="globVars" onclick="oDialog('g_ApplicationManager','vars')">g_ApplicationManager</p>
+            <p class="globVars" onclick="oDialog('g_ResourceManager','vars')">g_ResourceManager</p>
+            <p class="globVars" onclick="oDialog('g_score','vars')">g_score</p>
+            <p class="globVars" onclick="oDialog('g_player','vars')">g_player</p>
+	</div>
+	<h3><a href="#" onclick="setX(),closeD(),hideImgs()">Compositions</a></h3>
+	<div>
+            <p class="comps" onclick="oDialog('ApplicationManagerM','composition')">MainMenu</p>
+            <p class="comps" onclick="oDialog('ApplicationManagerL','composition')">Level</p>
+            <p class="comps" onclick="oDialog('ApplicationManagerR','composition')">RepeatingGameObject</p>
+            <p class="comps" onclick="oDialog('ApplicationManagerP','composition')">Player</p>
+            <p class="comps" onclick="oDialog('AnimatedGameObjectR','composition')">Rectangle</p>
+            <p class="comps" onclick="oDialog('GameObjectManagerA','composition')">ApplicationManager</p>
+            <p class="comps" onclick="oDialog('GameObjectManagerR','composition')">ResourceManager</p>
+            <p class="comps" onclick="oDialog('LevelV','composition')">VisualGameObject</p>
+            <p class="comps" onclick="oDialog('LevelP','composition')">Powerup</p>
+            <p class="comps" onclick="oDialog('LevelL','composition')">LevelEndPost</p>
+            <p class="comps" onclick="oDialog('MainG','composition')">GameObjectManager</p>
+           
+	</div>
+        <h3><a href="#" onclick="setX(),closeD(),put()">Inheritance</a></h3>
+        <div>
+           Inheritance view->
+        </div>
+        <h3><a href="#" onclick="setX(),closeD(),hideImgs(),put1()">Resource</a></h3>
+        <div>
+           
+        </div>
+</div>
+    
+
+</div><!-- End accordionResizer -->
+<div>
+<div id="AnimatedGameObjectDialog" style="display: none;">csye6220-Term Project</div>
+<div id="ApplicationManagerDialog" style="display: none;">csye6220-Term Project</div>
+<div id="GameObjectDialog" style="display: none;">csye6220-Term Project</div>
+<div id="GameObjectManagerDialog" style="display: none;">csye6220-Term Project</div>
+<div id="LevelDialog" style="display: none;">csye6220-Term Project</div>
+<div id="LevelEndPostDialog" style="display: none;">csye6220-Term Project</div>
+<div id="MainDialog" style="display: none;">csye6220-Term Project</div>
+<div id="MainMenuDialog" style="display: none;">csye6220-Term Project</div>
+<div id="PlayerDialog" style="display: none;">csye6220-Term Project</div>
+<div id="PowerUpDialog" style="display: none;">csye6220-Term Project</div>
+<div id="RectangleDialog" style="display: none;">csye6220-Term Project</div>
+<div id="RepeatingGameObjectDialog" style="display: none;">csye6220-Term Project</div>
+<div id="ResourceManagerDialog" style="display: none;">csye6220-Term Project</div>
+<div id="UtilsDialog" style="display: none;">csye6220-Term Project</div>
+<div id="VisualGameObjectDialog" style="display: none;">csye6220-Term Project</div>
+
+
+<div id="AnimatedGameObjectFDialog" style="display: none;">csye6220-Term Project</div>
+<div id="ApplicationManagerFDialog" style="display: none;">csye6220-Term Project</div>
+<div id="GameObjectFDialog" style="display: none;">csye6220-Term Project</div>
+<div id="GameObjectManagerFDialog" style="display: none;">csye6220-Term Project</div>
+<div id="InitFDialog" style="display: none;">csye6220-Term Project</div>
+<div id="LevelFDialog" style="display: none;">csye6220-Term Project</div>
+<div id="LevelEndPostFDialog" style="display: none;">csye6220-Term Project</div>
+<div id="MainMenuFDialog" style="display: none;">csye6220-Term Project</div>
+<div id="PlayerFDialog" style="display: none;">csye6220-Term Project</div>
+<div id="PowerUpFDialog" style="display: none;">csye6220-Term Project</div>
+<div id="RectangleFDialog" style="display: none;">csye6220-Term Project</div>
+<div id="RepeatingGameObjectFDialog" style="display: none;">csye6220-Term Project</div>
+<div id="ResourceManagerFDialog" style="display: none;">csye6220-Term Project</div>
+<div id="VisualGameObjectFDialog" style="display: none;">csye6220-Term Project</div>
+
+
+<div id="fpsDialog" style="display: none;">csye6220-Term Project</div>
+<div id="SECONDS_BETWEEN_FRAMESDialog" style="display: none;">csye6220-Term Project</div>
+<div id="g_GameObjectManagerDialog" style="display: none;">csye6220-Term Project</div>
+<div id="g_ApplicationManagerDialog" style="display: none;">csye6220-Term Project</div>
+<div id="g_ResourceManagerDialog" style="display: none;">csye6220-Term Project</div>
+<div id="g_scoreDialog" style="display: none;">csye6220-Term Project</div>
+<div id="g_playerDialog" style="display: none;">csye6220-Term Project</div>
+
+
+<div id="AnimatedGameObjectHDialog" style="display: none;">
+    <a class="inheritance" href="#" onclick="inhrt('AnimatedGameObject','inheritance')">AnimatedGameObject</a>
+</div>
+<div id="GameObjectHDialog" style="display: none;">
+     <a class="inheritance" href="#" onclick="inhrt('GameObject','inheritance')">GameObject</a>
+</div>
+<div id="VisualGameObjectHDialog" style="display: none;">
+     <a class="inheritance" href="#" onclick="inhrt('VisualGameObject','inheritance')">VisualGameObject</a>
+</div>
+<div id="MainMenuHDialog" style="display: none;">
+     <a class="inheritance" href="#" onclick="inhrt('MainMenu','inheritance')">MainMenu</a>
+</div>
+<div id="RepeatingGameObjectHDialog" style="display: none;">
+     <a class="inheritance" href="#" onclick="inhrt('RepeatingGameObject','inheritance')">RepeatingGameObject</a>
+</div>
+<div id="PowerUpHDialog" style="display: none;">
+     <a class="inheritance" href="#" onclick="inhrt('PowerUp','inheritance')">PowerUp</a>
+</div>
+<div id="PlayerHDialog" style="display: none;">
+     <a class="inheritance" href="#" onclick="inhrt('Player','inheritance')">Player</a>
+</div>
+<div id="LevelEndPostHDialog" style="display: none;">
+     <a class="inheritance" href="#" onclick="inhrt('LevelEndPost','inheritance')">LevelEndPost</a>
+</div>
+
+
+<div id="AnimatedGameObjectH1Dialog" style="display: none;">csye6220-Term Project</div>
+<div id="GameObjectH1Dialog" style="display: none;"></div>
+<div id="VisualGameObjectH1Dialog" style="display: none;"></div>
+<div id="MainMenuH1Dialog" style="display: none;"></div>
+<div id="RepeatingGameObjectH1Dialog" style="display: none;"></div>
+<div id="PowerUpH1Dialog" style="display: none;"></div>
+<div id="PlayerH1Dialog" style="display: none;"></div>
+<div id="LevelEndPostH1Dialog" style="display: none;"></div>
+
+
+<div id="ApplicationManagerMDialog" style="display: none;">csye6220-Term Project</div>
+<div id="ApplicationManagerLDialog" style="display: none;">csye6220-Term Project</div>
+<div id="ApplicationManagerRDialog" style="display: none;">csye6220-Term Project</div>
+<div id="ApplicationManagerPDialog" style="display: none;">csye6220-Term Project</div>
+<div id="AnimatedGameObjectRDialog" style="display: none;">csye6220-Term Project</div>
+<div id="RepeatingGameObjectCDialog" style="display: none;">csye6220-Term Project</div>
+<div id="GameObjectManagerADialog" style="display: none;">csye6220-Term Project</div>
+<div id="GameObjectManagerRDialog" style="display: none;">csye6220-Term Project</div>
+<div id="LevelVDialog" style="display: none;">csye6220-Term Project</div>
+<div id="LevelPDialog" style="display: none;">csye6220-Term Project</div>
+<div id="LevelLDialog" style="display: none;">csye6220-Term Project</div>
+<div id="MainGDialog" style="display: none;">csye6220-Term Project</div>
+
+
+<div id="ResourceDialog" style="display: none;">
+    <ul>
+        <li>
+            <a href="http://jqueryui.com/demos/dialog/#modal" target="blank">JQueryUI Dialog</a>
+        </li>
+        <li>
+            <a href="http://www1.coe.neu.edu/~mourant/csye6220Fall2011/csye6220Fall2011/Blog/Blog.html" target="blank">Professor Mourant's class web site</a>
+        </li>
+        <li>
+            <a href="http://sourceforge.net/projects/webdemos/files/webdemos/Main%20Menu/" target="blank">MainMenu Project source link</a>
+        </li>
+        <li>
+            <a href="http://www.brighthub.com/internet/web-development/articles/41536.aspx" target="blank">Developer website(BrightHub)</a>
+        </li>
+    </ul>
+</div>
+
+</div>
+
+</div>
+
+</body>
+</html>

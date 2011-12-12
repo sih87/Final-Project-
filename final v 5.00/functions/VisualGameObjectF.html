@@ -1,0 +1,109 @@
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <title></title>
+        <meta charset="utf-8">
+       
+	<title>csye6220-Term Project-Final Project</title>
+
+        <script>
+            
+	$(document).ready(function() { 
+            
+           $('#UsedInstartupVisualGameObjectDialog').dialog({autoOpen: false});
+           $('#UsedInshutdownVisualGameObjectDialog').dialog({autoOpen: false});
+           $('#UsedIncollisionAreaVGDialog').dialog({autoOpen: false});
+           $('#UsedInshutdownVGDialog').dialog({autoOpen: false});
+           $('#UsedIndrawVGDialog').dialog({autoOpen: false});
+           });
+       
+function koy(name)
+{
+                 bise=$(window).scrollLeft();
+               var rt1= jQuery.inArray(name, myFArray)
+               
+               if(rt1==-1)
+               {
+                  
+                    myFArray.push(name);
+                    var options=
+                   {
+                        title:name,
+                        position:[xThis-bise,yThis],
+                        width:250,
+                        height:350
+                 };
+                
+                    xThis+=260;
+               }
+               else{ $("#UsedIn"+name+"Dialog").dialog('open');}
+                
+              $("#UsedIn"+name+"Dialog").dialog('option',options);
+              
+              $("#UsedIn"+name+"Dialog").dialog('open');
+  
+             
+}
+        </script>
+        
+    </head>
+    <body>
+   
+        <a onclick="koy('drawVG')" href="#">draw()</a><br/>
+        <a onclick="koy('startupVisualGameObject')" href="#">startupVisualGameObject()</a><br/>
+        <a onclick="koy('shutdownVisualGameObject')" href="#">shutdownVisualGameObject()</a><br/>
+        <a onclick="koy('shutdownVG')" href="#">shutdown()</a><br/>
+        <a onclick="koy('collisionAreaVG')" href="#">collisionArea()</a><br/>
+       
+       
+        <div id="UsedInstartupVisualGameObjectDialog" style="display: none;">
+             <pre class="prettyprint">
+  this.startupVisualGameObject = function(/**Image*/ image, /**Number*/ x, /**Number*/ y, /**Number*/ z)
+    {
+        this.startupGameObject(x, y, z);
+        this.image = image;
+        return this;
+    }
+            </pre>
+        </div>
+        
+        <div id="UsedInshutdownVisualGameObjectDialog" style="display: none;">
+            <pre class="prettyprint">
+ this.shutdownVisualGameObject = function()
+    {
+        this.image = null;
+        this.shutdownGameObject();
+    }
+            </pre>
+        </div>
+        <div id="UsedIncollisionAreaVGDialog" style="display: none;">
+             <pre class="prettyprint">
+  this.collisionArea = function()
+    {
+        return new Rectangle().startupRectangle(this.x, this.y, this.image.width, this.image.height);
+    }
+            </pre>
+        </div>
+        <div id="UsedInshutdownVGDialog" style="display: none;">
+             <pre class="prettyprint">
+  this.shutdown = function()
+    {
+        this.shutdownVisualGameObject();
+    }
+            </pre>
+        </div>
+        <div id="UsedIndrawVGDialog" style="display: none;">
+             <pre class="prettyprint">
+   this.draw = function(/**Number*/ dt, /**CanvasRenderingContext2D*/ context, /**Number*/ xScroll, /**Number*/ yScroll)
+    {
+        context.drawImage(this.image, this.x - xScroll, this.y - yScroll);
+    }
+            </pre>
+        </div>
+     
+        
+        <script>prettyPrint();</script>
+    </body>
+</html>
+

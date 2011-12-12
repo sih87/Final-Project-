@@ -1,0 +1,74 @@
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <title></title>
+        <meta charset="utf-8">
+       
+	<title>csye6220-Term Project-Final Project</title>
+
+        <script>
+          
+	$(document).ready(function() { 
+            
+           $('#UsedInstartupMainMenuDialog').dialog({autoOpen: false});
+           $('#UsedInkeyDownMMDialog').dialog({autoOpen: false});
+           
+        });
+
+function koy(name)
+{
+                 bise=$(window).scrollLeft();
+               var rt1= jQuery.inArray(name, myFArray)
+               
+               if(rt1==-1)
+               {
+                  
+                    myFArray.push(name);
+                    var options=
+                   {
+                        title:name,
+                        position:[xThis-bise,yThis],
+                        width:250,
+                        height:350
+                 };
+                
+                    xThis+=260;
+               }
+               else{ $("#UsedIn"+name+"Dialog").dialog('open');}
+                
+              $("#UsedIn"+name+"Dialog").dialog('option',options);
+              
+              $("#UsedIn"+name+"Dialog").dialog('open');
+  
+             
+}
+        </script>
+        
+    </head>
+    <body>
+   
+        <a onclick="koy('startupMainMenu')" href="#">startupMainMenu()</a><br/>
+        <a onclick="koy('keyDownMM')" href="#">keyDown()</a><br/>
+        
+      
+        <div id="UsedInstartupMainMenuDialog" style="display: none;">
+        this.startupMainMenu = function()
+    {
+        this.startupVisualGameObject(g_ResourceManager.mainmenu, 0, 0, 1);
+        return this;
+    }
+
+        </div>
+        <div id="UsedInkeyDownMMDialog" style="display: none;">
+              <pre class="prettyprint">
+   this.keyDown = function(event)
+    {
+        g_ApplicationManager.startLevel();
+    }
+            </pre>
+        </div>
+       <script>prettyPrint();</script>
+        
+    </body>
+</html>

@@ -1,0 +1,128 @@
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <title></title>
+        <meta charset="utf-8">
+       
+	<title>csye6220-Term Project-Final Project</title>
+
+        <script>
+            
+	$(document).ready(function() { 
+            
+           $('#UsedInstartupGameObjectDialog').dialog({autoOpen: false});
+           $('#UsedInshutdownGameObjectDialog').dialog({autoOpen: false});
+           $('#UsedInshutdownGDialog').dialog({autoOpen: false});
+          
+          
+        });
+
+function koy(name)
+{
+                 bise=$(window).scrollLeft();
+               var rt1= jQuery.inArray(name, myFArray)
+               
+               if(rt1==-1)
+               {
+                  
+                    myFArray.push(name);
+                    var options=
+                   {
+                        title:name,
+                        position:[xThis-bise,yThis],
+                        width:250,
+                        height:350
+                 };
+                
+                    xThis+=260;
+               }
+               else{ $("#UsedIn"+name+"Dialog").dialog('open');}
+                
+              $("#UsedIn"+name+"Dialog").dialog('option',options);
+              
+              $("#UsedIn"+name+"Dialog").dialog('open');
+  
+             
+}
+        </script>
+        
+    </head>
+    <body>
+   
+        <a onclick="koy('startupGameObject')" href="#">startupGameObject()</a><br/>
+        <a onclick="koy('shutdownGameObject')" href="#">shutdownGameObject()</a><br/>
+        <a onclick="koy('shutdownG')" href="#">shutdown()</a><br/>
+      
+        
+        
+        
+        <div id="UsedInstartupGameObjectDialog" style="display: none;">
+             <pre class="prettyprint">
+  this.startupGameObjectManager = function()
+    {
+        // set the global pointer to reference this object
+        g_GameObjectManager = this;
+
+        // watch for keyboard events
+        document.onkeydown = function(event){g_GameObjectManager.keyDown(event);}
+        document.onkeyup = function(event){g_GameObjectManager.keyUp(event);}
+
+        // get references to the canvas elements and their 2D contexts
+        this.canvas = document.getElementById('canvas');
+
+        // if the this.canvas.getContext function does not exist it is a safe bet that
+        // the current browser does not support the canvas element.
+        // in this case we don't go any further, which will save some debuggers (like
+        // the IE8 debugger) from throwing up a lot of errors.
+        if (this.canvas.getContext)
+        {
+            this.canvasSupported = true;
+            this.context2D = this.canvas.getContext('2d');
+            this.backBuffer = document.createElement('canvas');
+            this.backBuffer.width = this.canvas.width;
+            this.backBuffer.height = this.canvas.height;
+            this.backBufferContext2D = this.backBuffer.getContext('2d');
+        }
+
+        // create a new ResourceManager
+        new ResourceManager().startupResourceManager(
+            [{name: 'runLeft', src: 'run_left.png'},
+            {name: 'runRight', src: 'run_right.png'},
+            {name: 'idleLeft', src: 'idle_left.png'},
+            {name: 'idleRight', src: 'idle_right.png'},
+            {name: 'background0', src: 'jsplatformer4_b0.png'},
+            {name: 'background1', src: 'jsplatformer4_b1.png'},
+            {name: 'background2', src: 'jsplatformer4_b2.png'},
+            {name: 'block', src: 'BlockA0.png'},
+            {name: 'gem', src: 'Gem.png'},
+            {name: 'mainmenu', src: 'mainmenu.png'},
+            {name: 'portal', src: 'portal.png'}]);
+
+        // use setInterval to call the draw function
+        setInterval(function(){g_GameObjectManager.draw();}, SECONDS_BETWEEN_FRAMES);
+        
+        return this;        
+    }
+            </pre>
+        </div>
+        <div id="UsedInshutdownGameObjectDialog" style="display: none;">
+             <pre class="prettyprint">
+       this.shutdownGameObject = function()
+    {
+        g_GameObjectManager.removeGameObject(this);
+    }
+            </pre>
+        </div>
+        <div id="UsedInshutdownGDialog" style="display: none;">
+             <pre class="prettyprint">
+     this.shutdown = function()
+    {
+         this.shutdownGameObject();
+    }
+            </pre>
+        </div>
+       
+        <script>prettyPrint();</script>
+    </body>
+</html>

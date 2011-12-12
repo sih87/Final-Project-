@@ -1,0 +1,42 @@
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <title></title>
+        <meta charset="utf-8">
+       
+	<title>csye6220-Term Project-Final Project</title>
+
+       
+    </head>
+    <body>
+        <pre class="prettyprint">
+/**
+    The main menu screen
+    @author <a href="mailto:matthewcasperson@gmail.com">Matthew Casperson</a>
+    @class
+*/
+function MainMenu()
+{
+    this.startupMainMenu = function()
+    {
+        this.startupVisualGameObject(g_ResourceManager.mainmenu, 0, 0, 1);
+        return this;
+    }
+
+    /**
+        Called when a key is pressed
+        @param event Event Object
+    */
+    this.keyDown = function(event)
+    {
+        g_ApplicationManager.startLevel();
+    }
+}
+MainMenu.prototype = new VisualGameObject;
+       </pre>
+        
+        
+<script>prettyPrint();</script>
+    </body>
+</html>

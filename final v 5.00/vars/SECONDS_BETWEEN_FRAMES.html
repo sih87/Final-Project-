@@ -1,0 +1,42 @@
+<!--
+To change this template, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html>
+    <head>
+        <title></title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <style>
+            .bold {font-weight: bold;}
+        </style>
+    </head>
+    <body>
+         <table border="1">
+             <tr>
+                 <td class="bold">Initialized In:</td>
+                 <td>Main.js</td>
+                 
+             </tr>
+             <tr>
+                 <td class="bold">Initial Value:</td>
+                 <td><pre class="prettyprint">var SECONDS_BETWEEN_FRAMES = 1 / FPS;</pre></td>
+             </tr>
+        </table>
+        
+          <br />
+          
+        <table border="1">
+            <tr>
+               <td class="bold">Used In:</td>
+               <td>GameObjectManager.js</td>
+            </tr>
+            <tr>
+                <td class="bold">Value Changed to:</td>
+                 <td><pre class="prettyprint">setInterval(function(){g_GameObjectManager.draw();}, SECONDS_BETWEEN_FRAMES);</pre></td>
+            </tr>
+            
+        </table>
+          <script>prettyPrint();</script>
+    </body>
+</html>

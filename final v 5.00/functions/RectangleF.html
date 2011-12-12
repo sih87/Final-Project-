@@ -1,0 +1,86 @@
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <title></title>
+        <meta charset="utf-8">
+       
+	<title>csye6220-Term Project-Final Project</title>
+
+        <script>
+           
+	$(document).ready(function() { 
+            
+           $('#UsedInstartupRectangleDialog').dialog({autoOpen: false});
+           $('#UsedInintersectsDialog').dialog({autoOpen: false});
+       });
+function koy(name)
+{
+                 bise=$(window).scrollLeft();
+               var rt1= jQuery.inArray(name, myFArray)
+               
+               if(rt1==-1)
+               {
+                  
+                    myFArray.push(name);
+                    var options=
+                   {
+                        title:name,
+                        position:[xThis-bise,yThis],
+                        width:250,
+                        height:350
+                 };
+                
+                    xThis+=260;
+               }
+               else{ $("#UsedIn"+name+"Dialog").dialog('open');}
+                
+              $("#UsedIn"+name+"Dialog").dialog('option',options);
+              
+              $("#UsedIn"+name+"Dialog").dialog('open');
+  
+             
+}
+        </script>
+        
+    </head>
+    <body>
+   
+        <a onclick="koy('startupRectangle')" href="#">startupRectangle()</a><br/>
+        <a onclick="koy('intersects')" href="#">intersects()</a><br/>
+       
+        <div id="UsedInstartupRectangleDialog" style="display: none;">
+           <pre class="prettyprint">
+  this.startupRectangle = function(/**Number*/ left, /**Number*/ top, /**Number*/ width, /**Number*/ height)
+    {
+        this.left = left;
+        this.top = top;
+        this.width = width;
+        this.height = height;
+        return this;
+    }
+
+            </pre>
+        </div>
+        
+        <div id="UsedInintersectsDialog" style="display: none;">
+            <pre class="prettyprint">
+  this.intersects = function(/**Rectangle*/ other)
+    {
+        if (this.left + this.width < other.left)
+            return false;
+        if (this.top + this.height < other.top)
+            return false;
+        if (this.left > other.left + other.width)
+            return false;
+        if (this.top > other.top + other.height)
+            return false;
+
+        return true;
+    }
+            </pre>
+        </div>
+        <script>prettyPrint();</script>
+    </body>
+</html>
+

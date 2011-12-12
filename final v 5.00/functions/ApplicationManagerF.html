@@ -1,0 +1,111 @@
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <title></title>
+        <meta charset="utf-8">
+       
+	<title>csye6220-Term Project-Final Project</title>
+
+        <script>
+           
+	$(document).ready(function() { 
+            
+           $('#UsedInstartupApplicationManagerDialog').dialog({autoOpen: false});
+           $('#UsedInstartLevelDialog').dialog({autoOpen: false});
+           $('#UsedInopenMainMenuDialog').dialog({autoOpen: false});
+           $('#UsedInupdateScoreDialog').dialog({autoOpen: false});
+          
+        });
+
+function koy(name)
+{
+                 bise=$(window).scrollLeft();
+               var rt1= jQuery.inArray(name, myFArray)
+               
+               if(rt1==-1)
+               {
+                  
+                    myFArray.push(name);
+                    var options=
+                   {
+                        title:name,
+                        position:[xThis-bise,yThis],
+                        width:250,
+                        height:350
+                 };
+                
+                    xThis+=260;
+               }
+               else{ $("#UsedIn"+name+"Dialog").dialog('open');}
+                
+              $("#UsedIn"+name+"Dialog").dialog('option',options);
+              
+              $("#UsedIn"+name+"Dialog").dialog('open');
+  
+             
+}
+        </script>
+        
+    </head>
+    <body>
+   
+        <a onclick="koy('startupApplicationManager')" href="#">startupApplicationManager()</a><br/>
+        <a onclick="koy('startLevel')" href="#">startLevel()</a><br/>
+        <a onclick="koy('openMainMenu')" href="#">openMainMenu()</a><br/>
+        <a onclick="koy('updateScore')" href="#">updateScore()</a><br/>
+        
+        
+        
+        <div id="UsedInstartupApplicationManagerDialog" style="display: none;">
+                <pre class="prettyprint">
+    this.startupApplicationManager = function(canvasWidth, canvasHeight)
+    {
+        g_ApplicationManager = this;
+        this.canvasWidth = canvasWidth;
+        this.canvasHeight = canvasHeight;
+
+        this.openMainMenu();
+
+        return this;
+    }
+            </pre>
+        </div>
+        <div id="UsedInstartLevelDialog" style="display: none;">
+             <pre class="prettyprint">
+   this.startLevel = function()
+    {
+        g_GameObjectManager.shutdownAll();
+        this.level = new Level().startupLevel(this.canvasWidth, this.canvasHeight);
+        this.background3 = new RepeatingGameObject().startupRepeatingGameObject(g_ResourceManager.background2, 0, 100, 3, 600, 320, 0.75);
+        this.background2 = new RepeatingGameObject().startupRepeatingGameObject(g_ResourceManager.background1, 0, 100, 2, 600, 320, 0.5);
+        this.background = new RepeatingGameObject().startupRepeatingGameObject(g_ResourceManager.background0, 0, 0, 1, 600, 320, 0.25);
+        g_player = new Player().startupPlayer(this.level);
+        this.updateScore();
+    }
+            </pre>
+        </div>
+        <div id="UsedInopenMainMenuDialog" style="display: none;">
+                 <pre class="prettyprint">
+   this.openMainMenu = function()
+    {
+        g_GameObjectManager.shutdownAll();
+        g_GameObjectManager.xScroll = 0;
+        g_GameObjectManager.yScroll = 0;
+        g_score = 0;
+        this.mainMenu = new MainMenu().startupMainMenu();
+    }
+            </pre>
+        </div>
+        <div id="UsedInupdateScoreDialog" style="display: none;">
+            <pre class="prettyprint">
+   this.updateScore = function()
+    {
+        var score = document.getElementById(""Score"");
+        score.innerHTML = String(g_score);
+    }
+            </pre>
+        </div>
+        <script>prettyPrint();</script>
+    </body>
+</html>

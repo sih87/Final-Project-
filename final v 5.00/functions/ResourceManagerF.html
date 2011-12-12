@@ -1,0 +1,82 @@
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <title></title>
+        <meta charset="utf-8">
+       
+	<title>csye6220-Term Project-Final Project</title>
+
+        <script>
+         
+	$(document).ready(function() { 
+            
+           $('#UsedInstartupResourceManagerDialog').dialog({autoOpen: false});
+           
+       });
+function koy(name)
+{
+                 bise=$(window).scrollLeft();
+               var rt1= jQuery.inArray(name, myFArray)
+               
+               if(rt1==-1)
+               {
+                  
+                    myFArray.push(name);
+                    var options=
+                   {
+                        title:name,
+                        position:[xThis-bise,yThis],
+                        width:250,
+                        height:350
+                 };
+                
+                    xThis+=260;
+               }
+               else{ $("#UsedIn"+name+"Dialog").dialog('open');}
+                
+              $("#UsedIn"+name+"Dialog").dialog('option',options);
+              
+              $("#UsedIn"+name+"Dialog").dialog('open');
+  
+             
+}
+        </script>
+        
+    </head>
+    <body>
+   
+        <a onclick="koy('startupResourceManager')" href="#">startupResourceManager()</a><br/>
+       
+       
+        <div id="UsedInstartupResourceManagerDialog" style="display: none;">
+            <pre class="prettyprint">
+     this.startupResourceManager = function(/**Array*/ images)
+    {
+        // set the global variable
+  g_ResourceManager = this;
+
+        // initialize internal state.
+        this.imageProperties = new Array();
+
+        // for each image, call preload()
+        for ( var i = 0; i < images.length; i++ )
+  {
+   // create new Image object and add to array
+   var thisImage = new Image;
+   this[images[i].name] = thisImage;
+   this.imageProperties.push(images[i].name);
+
+   // assign the .src property of the Image object
+   thisImage.src = images[i].src;
+  }
+
+        return this;
+    }
+            </pre>
+        </div>
+        
+        <script>prettyPrint();</script>
+    </body>
+</html>
+

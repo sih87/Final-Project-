@@ -1,0 +1,104 @@
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <title></title>
+        <meta charset="utf-8">
+       
+	<title>csye6220-Term Project-Final Project</title>
+
+        <script>
+           
+	$(document).ready(function() { 
+            
+           $('#UsedInstartupPowerupDialog').dialog({autoOpen: false});
+           $('#UsedInshutdownPowerupDialog').dialog({autoOpen: false});
+           $('#UsedInupdatePUDialog').dialog({autoOpen: false});
+           $('#UsedInshutdownPUDialog').dialog({autoOpen: false});
+       });
+function koy(name)
+{
+                 bise=$(window).scrollLeft();
+               var rt1= jQuery.inArray(name, myFArray)
+               
+               if(rt1==-1)
+               {
+                  
+                    myFArray.push(name);
+                    var options=
+                   {
+                        title:name,
+                        position:[xThis-bise,yThis],
+                        width:250,
+                        height:350
+                 };
+                
+                    xThis+=260;
+               }
+               else{ $("#UsedIn"+name+"Dialog").dialog('open');}
+                
+              $("#UsedIn"+name+"Dialog").dialog('option',options);
+              
+              $("#UsedIn"+name+"Dialog").dialog('open');
+  
+             
+}
+        </script>
+        
+    </head>
+    <body>
+   
+        <a onclick="koy('startupPowerup')" href="#">startupPowerup()</a><br/>
+        <a onclick="koy('shutdownPowerup')" href="#">shutdownPowerup()</a><br/>
+        <a onclick="koy('shutdownPU')" href="#">shutdown()</a><br/>
+        <a onclick="koy('updatePU')" href="#">update()</a><br/>
+      
+        <div id="UsedInstartupPowerupDialog" style="display: none;">
+            <pre class="prettyprint">
+   this.startupPowerup = function(/**Number*/ value, /**Image*/ image, /**Number*/ x, /**Number*/ y, /**Number*/ z, /**Number*/ frameCount, /**Number*/ fps)
+    {
+        this.startupAnimatedGameObject(image, x, y - this.bounceHeight, z, frameCount, fps);
+        this.value = value;
+        return this;
+    }
+            </pre>
+        </div>
+        
+        <div id="UsedInshutdownPowerupDialog" style="display: none;">
+             <pre class="prettyprint">
+   this.shutdownPowerup = function()
+    {
+        this.shutdownAnimatedGameObject();
+    }
+
+            </pre>
+        </div>
+        <div id="UsedInshutdownPUDialog" style="display: none;">
+           <pre class="prettyprint">
+  this.shutdown = function()
+    {
+        this.shutdownPowerup();
+    }
+            </pre>
+        </div>
+        <div id="UsedInupdatePUDialog" style="display: none;">
+            <pre class="prettyprint">
+  this.update = function (/**Number*/ dt, /**CanvasRenderingContext2D*/context, /**Number*/ xScroll, /**Number*/ yScroll)
+    {
+        var lastSineWavePos = this.sineWavePos;
+        this.sineWavePos += this.bounceSpeed * dt;
+        this.y += (Math.sin(this.sineWavePos) - Math.sin(lastSineWavePos)) * this.bounceHeight;
+
+        if (this.collisionArea().intersects(g_player.collisionArea()))
+        {
+            this.shutdown();
+            g_score += this.value;
+            g_ApplicationManager.updateScore();
+        }
+    }
+            </pre>
+        </div>
+        <script>prettyPrint();</script>
+    </body>
+</html>
+
